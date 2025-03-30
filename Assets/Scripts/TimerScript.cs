@@ -8,6 +8,7 @@ public class TimerScript : MonoBehaviour
     public float time = 100f;
     public int oxygenLevel = 100;
     float fuelLevel;
+    float ogTime = 0f;
 
     GameObject timer;
     GameObject oxygen;
@@ -19,7 +20,7 @@ public class TimerScript : MonoBehaviour
 
     void Awake()
     {
-        
+        ogTime = time;
         florbus = GameObject.Find("Florbus");
         player = florbus.GetComponent<Player>();
     }
@@ -52,13 +53,13 @@ public class TimerScript : MonoBehaviour
 
         ftext.text = "Fuel: " + fuelLevel.ToString() + "%";
 
-
+        
 
         if (oxygenLevel == 0)
         {
             oxygenLevel = 100;
 
-            time = 100f;
+            time = ogTime;
             
             player.jumpSeconds = 10f;
         }
@@ -69,7 +70,8 @@ public class TimerScript : MonoBehaviour
         }
 
     }
-    
+
+      
 }
 
 
